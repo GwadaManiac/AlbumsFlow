@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.lbc.myalbumlist.repo.data.model.AlbumEntity
 
-@Database(version = 1, entities = [AlbumEntity::class])
+@Database(version = 1, entities = [AlbumEntity::class], exportSchema = false)
 abstract class AlbumDatabase: RoomDatabase() {
 
     abstract fun albumDao(): AlbumDao

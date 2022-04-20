@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Album List</string>
+
+    <string name="update_albums_error">Error while retrieving your albums</string>
+    <string name="get_albums_error">No albums found.</string>
+    <string name="update_albums_success">Albums updated.</string>
 </resources>

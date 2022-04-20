@@ -1,13 +1,11 @@
 package com.lbc.myalbumlist.repo.data
 
-import androidx.room.Dao
 import com.lbc.myalbumlist.model.Album
+import com.lbc.myalbumlist.repo.data.model.AlbumEntity
 import kotlinx.coroutines.flow.Flow
 
-@Dao
 interface AlbumDataSource {
 
-    fun getAlbums(): Flow<List<Album>>
-
+    suspend fun getAlbums(): Flow<List<AlbumEntity>>
     suspend fun insertAll(albumList: List<Album>)
 }

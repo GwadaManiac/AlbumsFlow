@@ -14,5 +14,5 @@ interface AlbumDao {
     fun getAlbums(): Flow<List<AlbumEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllReplace(t: List<AlbumEntity>)
+    fun insertAll(t: List<AlbumEntity>)
 }

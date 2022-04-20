@@ -4,11 +4,10 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.lbc.myalbumlist.model.Album
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Entity(tableName = "Albums")
+@Entity(tableName = "albums")
 data class AlbumEntity(
 
     @PrimaryKey
@@ -25,6 +24,4 @@ data class AlbumEntity(
 
     @ColumnInfo
     var thumbnailUrl: String
-): Parcelable {
-    fun toAlbumModel() = Album(id, albumId, title, url, thumbnailUrl)
-}
+): Parcelable
