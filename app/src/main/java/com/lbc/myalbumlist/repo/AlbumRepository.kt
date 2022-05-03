@@ -11,18 +11,10 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class AlbumRepository(private val albumDataSource: AlbumDataSource) {
-
-    private val apiService: ApiService
-
-    init {
-        val retrofit = Retrofit.Builder()
-            .baseUrl(LBC_BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        apiService = retrofit.create(ApiService::class.java)
-    }
+class AlbumRepository(
+    private val apiService: ApiService,
+    private val albumDataSource: AlbumDataSource
+    ) {
 
     suspend fun getAlbums(): Flow<List<AlbumEntity>> =
         withContext(Dispatchers.IO) { albumDataSource.getAlbums() }
@@ -37,8 +29,4 @@ class AlbumRepository(private val albumDataSource: AlbumDataSource) {
             }
             emit(response.isSuccessful)
         }
-
-    companion object {
-        const val LBC_BASE_URL = "https://static.leboncoin.fr/"
-    }
 }

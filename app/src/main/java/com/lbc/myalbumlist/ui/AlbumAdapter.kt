@@ -13,7 +13,7 @@ import com.lbc.myalbumlist.databinding.ItemListAlbumBinding
 import com.lbc.myalbumlist.repo.data.model.AlbumEntity
 
 
-class AlbumAdapter: ListAdapter<AlbumEntity, AlbumAdapter.AlbumViewHolder>(DIFF_CALLBACK) {
+class AlbumAdapter: ListAdapter<AlbumEntity, AlbumViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
         return AlbumViewHolder(ItemListAlbumBinding.inflate(
@@ -29,20 +29,6 @@ class AlbumAdapter: ListAdapter<AlbumEntity, AlbumAdapter.AlbumViewHolder>(DIFF_
     override fun getItemCount(): Int {
         return currentList.size
     }
-
-    inner class AlbumViewHolder(private val binding: ItemListAlbumBinding):
-        RecyclerView.ViewHolder(binding.root) {
-            fun bind(album: AlbumEntity) {
-                binding.title.text = album.title
-
-                val glideUrl = GlideUrl(album.thumbnailUrl, LazyHeaders.Builder()
-                    .addHeader("User-Agent", WebSettings.getDefaultUserAgent(binding.root.context))
-                    .build())
-                Glide.with(binding.root.context)
-                    .load(glideUrl)
-                    .into(binding.image)
-            }
-        }
 
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<AlbumEntity>() {
